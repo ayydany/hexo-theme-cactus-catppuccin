@@ -10,7 +10,7 @@ A responsive, clean, and minimalist [Hexo](https://hexo.io) theme. This is a sta
 
 This version is customized for a specific "developer-first" workflow:
 
-- **Catppuccin Mocha:** Soft, high-contrast dark theme with Mauve highlights.
+- **Catppuccin Palettes:** Includes all four flavors: **Latte**, **Frappé**, **Macchiato**, and **Mocha**.
 - **Configurable Branding:** Use the `title_prefix` setting to brand your browser tabs (e.g., `ayydany // About`).
 - **Custom Callouts:** Built-in `.callout` CSS class for highlighted notices or alert boxes.
 - **Refined UI:** Removed social sharing bloat and streamlined the post action menus.
@@ -38,7 +38,8 @@ theme: cactus-catppuccin
 Add these to your `_config.yml` (or `_config.cactus-catppuccin.yml`) to use the new features:
 
 ```yaml
-colorscheme: catppuccin-mocha
+# Available: catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+colorscheme: catppuccin-mocha 
 title_prefix: ayydany  # Your custom tab prefix
 ```
 
