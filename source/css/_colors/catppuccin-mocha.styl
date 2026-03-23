@@ -1,16 +1,73 @@
-// Catppuccin Mocha inspired palette with Mauve highlights
-$color-background = #1e1e2e
+// Catppuccin Mocha palette
+// Colors
+$rosewater = #f5e0dc
+$flamingo = #f2cdcd
+$pink = #f5c2e7
+$mauve = #cba6f7
+$red = #f38ba8
+$maroon = #eba0ac
+$peach = #fab387
+$yellow = #f9e2af
+$green = #a6e3a1
+$teal = #94e2d5
+$sky = #89dceb
+$sapphire = #74c7ec
+$blue = #89b4fa
+$lavender = #b4befe
+$text = #cdd6f4
+$subtext1 = #bac2de
+$subtext0 = #a6adc8
+$overlay2 = #9399b2
+$overlay1 = #7f849c
+$overlay0 = #6c7086
+$surface2 = #585b70
+$surface1 = #45475a
+$surface0 = #313244
+$base = #1e1e2e
+$mantle = #181825
+$crust = #11111b
+
+$accent_name = hexo-config("accent_color") || "mauve"
+$accent = $mauve
+if $accent_name == "rosewater"
+  $accent = $rosewater
+if $accent_name == "flamingo"
+  $accent = $flamingo
+if $accent_name == "pink"
+  $accent = $pink
+if $accent_name == "red"
+  $accent = $red
+if $accent_name == "maroon"
+  $accent = $maroon
+if $accent_name == "peach"
+  $accent = $peach
+if $accent_name == "yellow"
+  $accent = $yellow
+if $accent_name == "green"
+  $accent = $green
+if $accent_name == "teal"
+  $accent = $teal
+if $accent_name == "sky"
+  $accent = $sky
+if $accent_name == "sapphire"
+  $accent = $sapphire
+if $accent_name == "blue"
+  $accent = $blue
+if $accent_name == "lavender"
+  $accent = $lavender
+
+$color-background = $base
 $color-footer-mobile-1 = lighten($color-background, 2%)
 $color-footer-mobile-2 = lighten($color-background, 12%)
-$color-background-code = lighten($color-background, 6%)
-$color-border = #585b70
-$color-scrollbar = #6c7086
-$color-meta = #a6adc8
-$color-meta-code = lighten($color-meta, 8%)
-$color-link = #cba6f7
-$color-text = #cdd6f4
-$color-accent-3 = #bac2de
-$color-accent-2 = #f5c2e7
-$color-accent-1 = #cba6f7
-$color-quote = #f38ba8
+$color-background-code = $surface0
+$color-border = $surface2
+$color-scrollbar = $overlay0
+$color-meta = $subtext0
+$color-meta-code = $subtext1
+$color-link = $accent
+$color-text = $text
+$color-accent-3 = $subtext1
+$color-accent-2 = $pink
+$color-accent-1 = $accent
+$color-quote = $red
 $highlight = hexo-config("highlight") || "rainbow"

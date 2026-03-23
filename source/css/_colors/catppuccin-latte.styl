@@ -1,16 +1,73 @@
 // Catppuccin Latte palette
-$color-background = #eff1f5
+// Colors
+$rosewater = #dc8a78
+$flamingo = #dd7878
+$pink = #ea76cb
+$mauve = #8839ef
+$red = #d20f39
+$maroon = #e64553
+$peach = #fe640b
+$yellow = #df8e1d
+$green = #40a02b
+$teal = #179299
+$sky = #04a5e5
+$sapphire = #209fb5
+$blue = #1e66f5
+$lavender = #7287fd
+$text = #4c4f69
+$subtext1 = #5c5f77
+$subtext0 = #6c6f85
+$overlay2 = #7c7f93
+$overlay1 = #8c8fa1
+$overlay0 = #9ca0b0
+$surface2 = #acb0be
+$surface1 = #bcc0cc
+$surface0 = #ccd0da
+$base = #eff1f5
+$mantle = #e6e9ef
+$crust = #dce0e8
+
+$accent_name = hexo-config("accent_color") || "mauve"
+$accent = $mauve
+if $accent_name == "rosewater"
+  $accent = $rosewater
+if $accent_name == "flamingo"
+  $accent = $flamingo
+if $accent_name == "pink"
+  $accent = $pink
+if $accent_name == "red"
+  $accent = $red
+if $accent_name == "maroon"
+  $accent = $maroon
+if $accent_name == "peach"
+  $accent = $peach
+if $accent_name == "yellow"
+  $accent = $yellow
+if $accent_name == "green"
+  $accent = $green
+if $accent_name == "teal"
+  $accent = $teal
+if $accent_name == "sky"
+  $accent = $sky
+if $accent_name == "sapphire"
+  $accent = $sapphire
+if $accent_name == "blue"
+  $accent = $blue
+if $accent_name == "lavender"
+  $accent = $lavender
+
+$color-background = $base
 $color-footer-mobile-1 = lighten($color-background, 2%)
 $color-footer-mobile-2 = lighten($color-background, 12%)
-$color-background-code = darken($color-background, 6%)
-$color-border = #acb0be
-$color-scrollbar = #bcc0cc
-$color-meta = #5c5f77
-$color-meta-code = darken($color-meta, 8%)
-$color-link = #8839ef
-$color-text = #4c4f69
-$color-accent-3 = #6c6f85
-$color-accent-2 = #ea76cb
-$color-accent-1 = #8839ef
-$color-quote = #d20f39
+$color-background-code = $surface0
+$color-border = $surface2
+$color-scrollbar = $overlay0
+$color-meta = $subtext0
+$color-meta-code = $subtext1
+$color-link = $accent
+$color-text = $text
+$color-accent-3 = $subtext1
+$color-accent-2 = $pink
+$color-accent-1 = $accent
+$color-quote = $red
 $highlight = hexo-config("highlight") || "rainbow"

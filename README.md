@@ -12,6 +12,7 @@ This version is customized for a specific "developer-first" workflow:
 
 - **Catppuccin Palettes:** Includes all four flavors: **Latte**, **Frappé**, **Macchiato**, and **Mocha**.
 - **Configurable Branding:** Use the `title_prefix` setting to brand your browser tabs (e.g., `ayydany // About`).
+- **Configurable Accent:** Choose your preferred Catppuccin color as the primary accent (e.g., Mauve, Pink, Blue, etc.).
 - **Custom Callouts:** Built-in `.callout` CSS class for highlighted notices or alert boxes.
 - **Refined UI:** Removed social sharing bloat and streamlined the post action menus.
 
@@ -40,6 +41,8 @@ Add these to your `_config.yml` (or `_config.cactus-catppuccin.yml`) to use the 
 ```yaml
 # Available: catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 colorscheme: catppuccin-mocha 
+# Available Catppuccin colors (mauve, pink, blue, etc.)
+accent_color: mauve
 title_prefix: ayydany  # Your custom tab prefix
 ```
 

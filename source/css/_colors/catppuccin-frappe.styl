@@ -1,16 +1,73 @@
 // Catppuccin Frappé palette
-$color-background = #303446
+// Colors
+$rosewater = #f2d5cf
+$flamingo = #eebebe
+$pink = #f4b8e4
+$mauve = #ca9ee6
+$red = #e78284
+$maroon = #ea999c
+$peach = #ef9f76
+$yellow = #e5c890
+$green = #a6d189
+$teal = #81c8be
+$sky = #99d1db
+$sapphire = #85c1dc
+$blue = #8caaee
+$lavender = #babbf1
+$text = #c6d0f5
+$subtext1 = #b5bfe2
+$subtext0 = #a5adce
+$overlay2 = #949cbb
+$overlay1 = #838ba7
+$overlay0 = #737994
+$surface2 = #626880
+$surface1 = #51576d
+$surface0 = #414559
+$base = #303446
+$mantle = #292c3c
+$crust = #232634
+
+$accent_name = hexo-config("accent_color") || "mauve"
+$accent = $mauve
+if $accent_name == "rosewater"
+  $accent = $rosewater
+if $accent_name == "flamingo"
+  $accent = $flamingo
+if $accent_name == "pink"
+  $accent = $pink
+if $accent_name == "red"
+  $accent = $red
+if $accent_name == "maroon"
+  $accent = $maroon
+if $accent_name == "peach"
+  $accent = $peach
+if $accent_name == "yellow"
+  $accent = $yellow
+if $accent_name == "green"
+  $accent = $green
+if $accent_name == "teal"
+  $accent = $teal
+if $accent_name == "sky"
+  $accent = $sky
+if $accent_name == "sapphire"
+  $accent = $sapphire
+if $accent_name == "blue"
+  $accent = $blue
+if $accent_name == "lavender"
+  $accent = $lavender
+
+$color-background = $base
 $color-footer-mobile-1 = lighten($color-background, 2%)
 $color-footer-mobile-2 = lighten($color-background, 12%)
-$color-background-code = lighten($color-background, 6%)
-$color-border = #626880
-$color-scrollbar = #51576d
-$color-meta = #b5bfe2
-$color-meta-code = lighten($color-meta, 8%)
-$color-link = #ca9ee6
-$color-text = #c6d0f5
-$color-accent-3 = #a5adce
-$color-accent-2 = #f4b8e4
-$color-accent-1 = #ca9ee6
-$color-quote = #e78284
+$color-background-code = $surface0
+$color-border = $surface2
+$color-scrollbar = $overlay0
+$color-meta = $subtext0
+$color-meta-code = $subtext1
+$color-link = $accent
+$color-text = $text
+$color-accent-3 = $subtext1
+$color-accent-2 = $pink
+$color-accent-1 = $accent
+$color-quote = $red
 $highlight = hexo-config("highlight") || "rainbow"
