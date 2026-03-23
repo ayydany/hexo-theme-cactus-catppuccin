@@ -12,7 +12,8 @@ This version is customized for a specific "developer-first" workflow:
 
 - **Catppuccin Palettes:** Includes all four flavors: **Latte**, **Frappé**, **Macchiato**, and **Mocha**.
 - **Configurable Branding:** Use the `title_prefix` setting to brand your browser tabs (e.g., `ayydany // About`).
-- **Configurable Accent:** Choose your preferred Catppuccin color as the primary accent (e.g., Mauve, Pink, Blue, etc.).
+- **Configurable Accent:** Choose your preferred Catppuccin color as the primary accent.
+  - **Available Colors:** `rosewater`, `flamingo`, `pink`, `mauve`, `red`, `maroon`, `peach`, `yellow`, `green`, `teal`, `sky`, `sapphire`, `blue`, `lavender`.
 - **Custom Callouts:** Built-in `.callout` CSS class for highlighted notices or alert boxes.
 - **Refined UI:** Removed social sharing bloat and streamlined the post action menus.
 
