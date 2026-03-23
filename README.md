@@ -1,9 +1,14 @@
-# Cactus
+# Cactus Catppuccin
 
-> **Note:** This is a personal fork of [probberechts/hexo-theme-cactus](https://github.com/probberechts/hexo-theme-cactus).  
-> I plan to use this repository to customize Cactus further to my own liking.
+> **Note:** This is a personal fork of [probberechts/hexo-theme-cactus](https://github.com/probberechts/hexo-theme-cactus), a clean and simple theme for the [Hexo](http://hexo.io) blog framework.  
+> It is heavily inspired by the **Catppuccin Mocha** palette, featuring mauve accents, custom callout components, and a refined "ayydany // Title" branding.
 
-A responsive, clean and simple [Hexo](http://hexo.io) theme for a personal website.
+## Key Customizations
+
+- **Catppuccin Mocha Palette:** A dark, soothing theme with Mauve highlights.
+- **Custom Callouts:** Dedicated styles for alert-like boxes and important notices.
+- **Branding:** Configurable "Prefix // Title" format for browser tabs.
+- **Simplified Actions:** Removed unnecessary social sharing buttons for a cleaner reading experience.
 
 :cactus: [Demo](https://probberechts.github.io/hexo-theme-cactus/)
 
