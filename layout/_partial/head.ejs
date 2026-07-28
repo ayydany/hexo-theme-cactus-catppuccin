@@ -13,63 +13,12 @@
   <%- meta(page) %>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
-  <% if (theme.favicon) { %> <% if (theme.favicon.desktop) { %> <% if (theme.gravatar && (theme.gravatar.email || theme.gravatar.hash) &&
-  theme.favicon.desktop.gravatar) { %> <% if (theme.gravatar.email) { %>
-  <link rel="shortcut icon" href="<%= gravatar(theme.gravatar.email, 48) %>" />
-  <% } else { %>
-  <link
-    rel="shortcut icon"
-    href="https://www.gravatar.com/avatar/<%= theme.gravatar.hash %>?s=48"
-  />
-  <% } %> <% } else { %>
-  <link rel="shortcut icon" href="<%= url_for(theme.favicon.desktop.url) %>" />
-  <% } %> <% } %> <% if (theme.favicon.android) { %> <% if (theme.gravatar &&
-  (theme.gravatar.email || theme.gravatar.hash) &&
-  theme.favicon.android.gravatar) { %> <% if (theme.gravatar.email) { %>
-  <link
-    rel="icon"
-    type="image/png"
-    href="<%= gravatar(theme.gravatar.email, 192) %>"
-    sizes="192x192"
-  />
-  <% } else { %>
-  <link
-    rel="icon"
-    type="image/png"
-    href="https://www.gravatar.com/avatar/<%= theme.gravatar.hash %>?s=192"
-  />
-  <% } %> <% } else { %>
-  <link
-    rel="icon"
-    type="image/png"
-    href="<%= url_for(theme.favicon.android.url) %>"
-    sizes="192x192"
-  />
-  <% } %> <% } %> <% if (theme.favicon.apple) { %> <% if (theme.gravatar &&
-  (theme.gravatar.email || theme.gravatar.hash) && theme.favicon.apple.gravatar)
-  { %> <% if (theme.gravatar.email) { %>
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="<%= gravatar(theme.gravatar.email, 180) %>"
-  />
-  <% } else { %>
-  <link
-    rel="apple-touch-icon"
-    size="180x180"
-    href="https://www.gravatar.com/avatar/<%= theme.gravatar.hash %>?s=180"
-  />
-  <% } %> <% } else { %>
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="<%= url_for(theme.favicon.apple.url) %>"
-  />
-  <% } %> <% } %> <% } %>
+  <% favicon_view_model().forEach(function(icon) { %>
+  <link rel="<%= icon.rel %>" href="<%- icon.href %>"<% if (icon.type) { %> type="<%= icon.type %>"<% } %><% if (icon.sizes) { %> sizes="<%= icon.sizes %>"<% } %> />
+  <% }); %>
   <!-- title -->
-  <% var title_prefix = theme.title_prefix || "ayydany" %>
-  <title><% if (is_home()) { %><%= title_prefix %> // Daniel Carmo<% } else { %><%= title_prefix %> // <%= page_title() %><% } %></title>
+  <% var title_prefix = theme.title_prefix || config.title %>
+  <title><%= title_prefix %> // <%= is_home() ? (config.author || config.title) : page_title() %></title>
   <!-- async scripts -->
   <%- partial('./google_analytics.ejs') %> <%- partial('./umami_analytics.ejs')
   %>
@@ -84,8 +33,7 @@
     rel="stylesheet"
   />
   <!-- rss -->
-  <% if (theme.rss === '' && config.feed && config.feed.path) { %> <% theme.rss
-  = config.feed.path %> <% } %> <% if (theme.rss) { %>
+  <% if (theme.rss) { %>
   <link
     rel="alternate"
     href="<%= url_for(theme.rss) %>"

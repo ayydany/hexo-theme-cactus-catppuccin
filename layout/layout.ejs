@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html<%= config.language ? " lang=" + config.language.substring(0, 2) : ""%>>
 <%- partial('_partial/head') %>
-<body class="max-width mx-auto px3 <%- theme.direction -%>">
+<body class="max-width mx-auto px3 <%- theme.direction -%>"<% if (is_post()) { %> data-copy-label="<%= __('tooltip.copy_tip') %>" data-copied-label="<%= __('tooltip.copied') %>"<% } %>>
     <% const layoutName = page && page.layout; %>
     <% const showChrome = layoutName !== 'profile'; %>
     <% if (is_post()) { %>

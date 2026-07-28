@@ -20,65 +20,11 @@
   <% } else { %>
     <%- js('lib/clipboard/clipboard.min') %>
   <% } %>
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"<%= __('tooltip.copy_tip') %>\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "<%= __('tooltip.copied') %>");
-      e.clearSelection();
-    })
-  })
-  </script>
 <% } %>
 <%- js('js/main') %>
 <!-- search -->
 <% if (config.search && (page.search || page.type === "search")){ %>
   <%- js('js/search.js') %>
-  <script type="text/javascript">
-  $(function() {
-
-    var $inputArea = $("input#search-input");
-    var $resultArea = document.querySelector("div#search-result");
-
-    $inputArea.focus(function() {
-      var search_path = "<%= config.search.path %>";
-      if (search_path.length == 0) {
-        search_path = "search.xml";
-      }
-      var path = "<%= config.root %>" + search_path;
-      searchFunc(path, 'search-input', 'search-result');
-    });
-
-    $inputArea.keydown(function(e) {
-      if (e.which == 13) {
-        e.preventDefault();
-      }
-    });
-
-    var observer = new MutationObserver(function(mutationsList, observer) {
-      if (mutationsList.length == 1) {
-        if (mutationsList[0].addedNodes.length) {
-          $(".search-no-result").hide();
-        } else if (mutationsList[0].removedNodes.length) {
-          $(".search-no-result").show(200);
-        }
-      }
-    });
-
-    observer.observe($resultArea, { childList: true });
-
-  });
-  </script>
 <% } %>
 <!-- Baidu Analytics -->
 <% if (theme.baidu_analytics.enabled && theme.baidu_analytics.id){ %>
@@ -123,7 +69,7 @@
 
           script.src = 'https://utteranc.es/client.js';
           script.setAttribute('repo', utterances_repo);
-          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('issue-term', utterances_issue_term);
           script.setAttribute('label', utterances_label);
           script.setAttribute('theme', utterances_theme);
           script.setAttribute('crossorigin', 'anonymous');

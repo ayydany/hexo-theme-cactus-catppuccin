@@ -13,7 +13,8 @@
   "noempty": true,
   "nonew": true,
   "predef": [
-    "$"
+    "$",
+    "ClipboardJS"
   ],
   "quotmark": true,
   "trailing": true,
