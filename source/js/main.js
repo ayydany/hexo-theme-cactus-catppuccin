@@ -12,6 +12,31 @@ if (!!$.prototype.justifiedGallery) {
 
 $(document).ready(function() {
 
+  if ($(".highlight table").length && typeof ClipboardJS !== "undefined") {
+    $(".highlight table").each(function() {
+      $("<span>", {
+        "aria-label": document.body.getAttribute("data-copy-label"),
+        "class": "btn-copy tooltipped tooltipped-sw"
+      }).append($("<i>", { "class": "fa-regular fa-clone" })).insertBefore(this);
+    });
+
+    var clipboard = new ClipboardJS(".btn-copy", {
+      text: function(trigger) {
+        var text = "";
+        var lines = trigger.nextElementSibling.querySelectorAll(".code");
+        Array.prototype.forEach.call(lines, function(line) {
+          text += line.innerText + "\n";
+        });
+        return text;
+      }
+    });
+
+    clipboard.on("success", function(event) {
+      event.trigger.setAttribute("aria-label", document.body.getAttribute("data-copied-label"));
+      event.clearSelection();
+    });
+  }
+
   /**
    * Shows the responsive navigation menu on mobile.
    */

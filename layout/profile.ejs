@@ -1,110 +1,28 @@
-<%
-  const profile = theme.profile_page || {};
-  const fallbackName = config.author || config.title;
-  const name = profile.name || fallbackName;
-  const title = profile.title || profile.role;
-  const location = profile.location;
-  const intro = profile.intro;
-  const links = (profile.links && profile.links.length) ? profile.links : theme.social_links;
-  const avatar = profile.avatar || {};
-  const pageWidth = profile.width;
-  const contentWidth = profile.content_width;
-  const styleVars = [];
-  if (pageWidth) {
-    styleVars.push(`--profile-card-max-width:${pageWidth}`);
-    if (!contentWidth) {
-      styleVars.push(`--profile-content-max-width:${pageWidth}`);
-    }
-  }
-  if (contentWidth) {
-    styleVars.push(`--profile-content-max-width:${contentWidth}`);
-  }
-  const pageStyleAttr = styleVars.length ? ` style="${styleVars.join(';')}"` : '';
-  let avatarUrl = avatar.url;
-  const avatarAlt = avatar.alt || name;
-  const wantsGravatar = avatar.gravatar;
-  if (!avatarUrl && theme.logo && theme.logo.url) {
-    avatarUrl = url_for(theme.logo.url);
-  }
-  if (wantsGravatar && theme.gravatar && (theme.gravatar.email || theme.gravatar.hash)) {
-    if (theme.gravatar.email) {
-      avatarUrl = gravatar(theme.gravatar.email, 320);
-    } else if (theme.gravatar.hash) {
-      avatarUrl = `https://www.gravatar.com/avatar/${theme.gravatar.hash}?s=320`;
-    }
-  }
-  if (avatarUrl && !/^https?:\/\//i.test(avatarUrl) && !avatarUrl.startsWith('//') && !avatarUrl.startsWith('data:')) {
-    avatarUrl = url_for(avatarUrl);
-  }
-%>
-<section class="profile-page"<%- pageStyleAttr %>>
+<% const profile = profile_view_model(); %>
+<section class="profile-page"<% if (profile.style) { %> style="<%- profile.style %>"<% } %>>
   <div class="profile-card" itemscope itemtype="http://schema.org/Person">
-    <% if (avatarUrl) { %>
+    <% if (profile.avatarUrl) { %>
       <div class="profile-avatar">
-        <img src="<%- avatarUrl %>" alt="<%- avatarAlt %>" loading="lazy" itemprop="image" />
+        <img src="<%- profile.avatarUrl %>" alt="<%- profile.avatarAlt %>" loading="lazy" itemprop="image" />
       </div>
     <% } %>
-    <% if (name) { %>
-      <h1 class="profile-name" itemprop="name"><%= name %></h1>
+    <% if (profile.name) { %>
+      <h1 class="profile-name" itemprop="name"><%= profile.name %></h1>
     <% } %>
-    <% if (title) { %>
-      <p class="profile-title" itemprop="jobTitle"><%= title %></p>
+    <% if (profile.title) { %>
+      <p class="profile-title" itemprop="jobTitle"><%= profile.title %></p>
     <% } %>
-    <% if (location) { %>
-      <p class="profile-location" itemprop="homeLocation"><i class="fa-solid fa-location-dot"></i> <span><%= location %></span></p>
+    <% if (profile.location) { %>
+      <p class="profile-location" itemprop="homeLocation"><i class="fa-solid fa-location-dot"></i> <span><%= profile.location %></span></p>
     <% } %>
-    <% if (intro) { %>
-      <div class="profile-intro"><%- markdown(intro) %></div>
+    <% if (profile.intro) { %>
+      <div class="profile-intro"><%- markdown(profile.intro) %></div>
     <% } %>
-    <% if (links && links.length) { %>
+    <% if (profile.links.length) { %>
       <div class="profile-links" aria-label="<%- __('index.find_me_on') %>">
-        <% links.forEach(function(linkObj){
-             const icon = linkObj.icon;
-             const href = linkObj.link;
-             const label = linkObj.label || icon;
-             const isMail = icon === 'mail' || (typeof href === 'string' && href.startsWith('mailto:'));
-             const isRss = icon === 'rss';
-             const target = linkObj.target || (isMail ? '_self' : '_blank');
-             const rel = linkObj.rel || (target === '_blank' ? 'noopener' : '');
-             const finalHref = (isMail || isRss) ? href : url_for(href);
-             const rawStyle = (linkObj.style || linkObj.icon_style || linkObj.prefix || '').trim();
-             const styleMap = {
-               brands: 'fa-brands',
-               brand: 'fa-brands',
-               solid: 'fa-solid',
-               regular: 'fa-regular',
-               light: 'fa-light',
-               thin: 'fa-thin',
-               duotone: 'fa-duotone',
-               'sharp-solid': 'fa-sharp fa-solid',
-               'sharp-regular': 'fa-sharp fa-regular',
-               'sharp-light': 'fa-sharp fa-light',
-               'sharp-thin': 'fa-sharp fa-thin'
-             };
-             let iconStyleClasses = 'fa-brands';
-             if (rawStyle) {
-               if (rawStyle.includes(' ')) {
-                 iconStyleClasses = rawStyle;
-               } else {
-                 const normalized = rawStyle.replace(/^fa-/i, '').toLowerCase();
-                 if (styleMap[normalized]) {
-                   iconStyleClasses = styleMap[normalized];
-                 } else if (/^fa-/i.test(rawStyle)) {
-                   iconStyleClasses = rawStyle;
-                 } else {
-                   iconStyleClasses = `fa-${normalized}`;
-                 }
-               }
-             }
-        %>
-          <a class="profile-link" href="<%- finalHref %>"<% if (target) { %> target="<%- target %>"<% } %><% if (rel) { %> rel="<%- rel %>"<% } %> aria-label="<%- label %>"<% if (!isMail) { %> itemprop="sameAs"<% } %>>
-            <% if (isMail) { %>
-              <i class="fa-solid fa-envelope"></i>
-            <% } else if (isRss) { %>
-              <i class="fa-solid fa-rss"></i>
-            <% } else { %>
-              <i class="<%= iconStyleClasses %> fa-<%= icon %>"></i>
-            <% } %>
+        <% profile.links.forEach(function(link) { %>
+          <a class="profile-link" href="<%- link.href %>" target="<%- link.target %>"<% if (link.rel) { %> rel="<%- link.rel %>"<% } %> aria-label="<%- link.label %>"<% if (link.isIdentity) { %> itemprop="sameAs"<% } %>>
+            <i class="<%= link.iconClasses %>"></i>
           </a>
         <% }) %>
       </div>

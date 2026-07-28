@@ -1,4 +1,4 @@
-<section id="search">
+<section id="search" data-search-path="<%- url_for(config.search.path || 'search.xml') %>">
   <form>
     <input type="text" class="search-input" id="search-input" placeholder="<%= __('search.search') %>">
   </form>

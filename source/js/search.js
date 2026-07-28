@@ -156,3 +156,39 @@ var searchFunc = function(path, searchId, contentId) {
     }
   });
 };
+
+$(function() {
+  var search = document.getElementById("search");
+  if (!search) {
+    return;
+  }
+
+  var input = document.getElementById("search-input");
+  var results = document.getElementById("search-result");
+  var initialized = false;
+
+  input.addEventListener("focus", function() {
+    if (!initialized) {
+      searchFunc(search.getAttribute("data-search-path"), "search-input", "search-result");
+      initialized = true;
+    }
+  });
+
+  input.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  });
+
+  var observer = new MutationObserver(function(mutations) {
+    if (mutations.length === 1) {
+      if (mutations[0].addedNodes.length) {
+        $(".search-no-result").hide();
+      } else if (mutations[0].removedNodes.length) {
+        $(".search-no-result").show(200);
+      }
+    }
+  });
+
+  observer.observe(results, { childList: true });
+});

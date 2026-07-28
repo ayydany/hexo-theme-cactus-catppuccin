@@ -3,6 +3,12 @@
 * This fixes an issue with hexo-renderer-stylus, which otherwise ignores these
 * configuration overrides.
 */
+const { normalizeThemeConfig } = require("./lib/normalize-config.cjs");
+
 hexo.on('generateBefore', function () {
-  hexo.theme.config = Object.assign({}, hexo.theme.config, hexo.config.theme_config);
+  hexo.theme.config = normalizeThemeConfig(
+    hexo.theme.config,
+    hexo.config.theme_config,
+    hexo.config
+  );
 });

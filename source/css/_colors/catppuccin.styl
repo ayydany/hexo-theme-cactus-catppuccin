@@ -1,0 +1,44 @@
+$accent_name = hexo-config("accent_color") || "mauve"
+$accent = $mauve
+if $accent_name == "rosewater"
+  $accent = $rosewater
+if $accent_name == "flamingo"
+  $accent = $flamingo
+if $accent_name == "pink"
+  $accent = $pink
+if $accent_name == "red"
+  $accent = $red
+if $accent_name == "maroon"
+  $accent = $maroon
+if $accent_name == "peach"
+  $accent = $peach
+if $accent_name == "yellow"
+  $accent = $yellow
+if $accent_name == "green"
+  $accent = $green
+if $accent_name == "teal"
+  $accent = $teal
+if $accent_name == "sky"
+  $accent = $sky
+if $accent_name == "sapphire"
+  $accent = $sapphire
+if $accent_name == "blue"
+  $accent = $blue
+if $accent_name == "lavender"
+  $accent = $lavender
+
+$color-background = $base
+$color-footer-mobile-1 = lighten($color-background, 2%)
+$color-footer-mobile-2 = lighten($color-background, 12%)
+$color-background-code = $surface0
+$color-border = $surface2
+$color-scrollbar = $overlay0
+$color-meta = $subtext0
+$color-meta-code = $subtext1
+$color-link = $accent
+$color-text = $text
+$color-accent-3 = $subtext1
+$color-accent-2 = $pink
+$color-accent-1 = $accent
+$color-quote = $red
+$highlight = hexo-config("highlight") || "rainbow"

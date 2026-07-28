@@ -1,0 +1,17 @@
+title: Test Site
+author: Test Author
+url: https://example.com
+root: /
+language: en
+theme: cactus-catppuccin
+
+search:
+  path: search.xml
+
+theme_config:
+  title_prefix: test
+  utterances:
+    enabled: true
+    repo: owner/repo
+    issue_term: title
+    theme: github-light

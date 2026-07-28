@@ -1,6 +1,4 @@
-import decompress from "gulp-decompress";
 import { deleteAsync } from "del";
-import download from "gulp-download-stream";
 import fs from "fs";
 import gulp from "gulp";
 import path from "path";
