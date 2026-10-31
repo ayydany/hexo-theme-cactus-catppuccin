@@ -18,7 +18,7 @@
   <% }); %>
   <!-- title -->
   <% var title_prefix = theme.title_prefix || config.title %>
-  <title><%= `${title_prefix} // ${is_home() ? (theme.profile_page.name || config.author || config.title) : page_title()}` %></title>
+  <title><%= `${title_prefix} // ${is_home() ? 'Home' : page_title()}` %></title>
   <!-- async scripts -->
   <%- partial('./google_analytics.ejs') %> <%- partial('./umami_analytics.ejs')
   %>
