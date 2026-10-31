@@ -16,7 +16,6 @@ direction: ltr
 nav:
   home: /
   about: /about/
-  writing: /archives/
   projects: http://github.com/probberechts
 
 # Links to your social media accounts.
