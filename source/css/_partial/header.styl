@@ -77,41 +77,52 @@ if $logo-grayout
       -webkit-filter: none
 
 @media screen and (max-width: 480px)
+  #header
+    margin-bottom: 1rem
+
+  #header > a
+    display: block
+
+    #logo
+      display: none
+
   #header #title
-    display: table
-    margin-right: 5rem
-    min-height: $logo-height
+    margin-left: 0
+
     h1
-      display: table-cell
-      vertical-align: middle
+      display: block
+      font-size: 1.5rem
 
   #header #nav
+    clear: both
+    position: relative
+    padding-top: .25rem
+
     ul
+      display: flex
+      flex-wrap: wrap
+      gap: .75rem 0
+
       a:hover
         background: none
 
       li
-        display: none
-        border-right: 0
+        display: inline-block
+        margin-right: 15px
+        padding-top: 0
+        border-right: 1px dotted
+        border-color: $color-accent-1
 
       li.icon
-        position: absolute
-        top: 77px
-        right: 1rem
-        display: inline-block
-        text-align: center
+        display: none
 
-    ul.responsive
-      li
-        display: block
-    
-    ul 
-      a[aria-label="Menu"]
-        display: inline-block
-        min-width: 48px
-        min-height: 48px
+        a
+          display: inline
+          margin-right: 15px
 
-    li:not(:first-child)
-      padding-top: 1rem
-      padding-left: $logo-width + 20px
-      font-size: 1rem
+      li:last-child
+        margin-right: 0
+        border-right: 0
+
+        a
+          margin-right: 0
