@@ -56,8 +56,9 @@ after(async () => {
 test("renders site identity from configuration", async () => {
   const html = await readFile(path.join(siteDir, "public/index.html"), "utf8");
 
-  assert.match(html, /<title>test \/\/ Test Author<\/title>/);
-  assert.match(html, /<span class="h1"><a href="\/archives\/">Writing<\/a><\/span>/);
+  assert.match(html, /<title>test \/\/ Home<\/title>/);
+  assert.match(html, /<span class="title-author"> \/\/ Test Author<\/span>/);
+  assert.match(html, /<span class="h1"><a href="\/writing\/">Writing<\/a><\/span>/);
 });
 
 test("preserves nested defaults and honors utterances issue terms", async () => {
