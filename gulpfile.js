@@ -60,7 +60,8 @@ gulp.task("lint:js", function () {
   return gulp
     .src(["./source/js/**/*.js"])
     .pipe(jshint())
-    .pipe(jshint.reporter(jshintFormatter));
+    .pipe(jshint.reporter(jshintFormatter))
+    .pipe(jshint.reporter("fail"));
 });
 
 gulp.task("lint:stylus", function () {
@@ -75,7 +76,9 @@ gulp.task("lint:stylus", function () {
         config: ".stylintrc",
         reporters: [{ formatter: stylelintFormatter, console: true }],
       })
-    );
+    )
+    .pipe(stylint.reporter())
+    .pipe(stylint.reporter("fail"));
 });
 
 gulp.task("validate:config", function (cb) {
